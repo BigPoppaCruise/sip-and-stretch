@@ -376,8 +376,8 @@ export default function SipAndStretch() {
 
   // Arrow-key navigation
   useEffect(() => {
-    if (appState !== "playing" && appState !== "paused") return;
     const onKey = (e) => {
+      if (appState !== "playing" && appState !== "paused") return;
       if (e.key === "ArrowRight") skip();
       else if (e.key === "ArrowLeft") back();
     };
