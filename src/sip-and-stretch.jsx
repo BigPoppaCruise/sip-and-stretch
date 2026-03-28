@@ -447,7 +447,7 @@ export default function SipAndStretch() {
         </div>
 
         {/* POSE CARD */}
-        <div style={{ display: "flex", flex: 1, minHeight: 0, justifyContent: "center", width: "50%", marginRight: "auto" }}>
+        <div style={{ display: "flex", flex: 1, minHeight: 0, justifyContent: "center", width: "50%", justifySelf: "start" }}>
           <div style={{ width: "100%", minHeight: 0, display: "grid", gridTemplateRows: "0fr minmax(0, 14fr) 0.5fr" }}>
             <div />
             <div style={{ minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 4px 8px" }}>
@@ -459,7 +459,7 @@ export default function SipAndStretch() {
         </div>
 
         {/* INSTRUCTION */}
-        <div style={{ flexShrink: 0, width: "50%", marginRight: "auto", textAlign: "center" }}>
+        <div style={{ flexShrink: 0, width: "50%", justifySelf: "start", textAlign: "center" }}>
           <div style={{ fontSize: "24px", lineHeight: 1.65, color: "#d4ccc4", fontWeight: 300, marginBottom: "5px" }}>{cur.instruction}</div>
         </div>
 
