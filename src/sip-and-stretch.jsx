@@ -432,7 +432,7 @@ export default function SipAndStretch() {
         <div style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "flex-start" }}>
           <div />
           <div style={{ minWidth: 0, textAlign: "center", alignSelf: "center" }}>
-            <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(32px,6vw,52px)", lineHeight: 1.05, letterSpacing: "-0.02em", color: "#98e8c1" }}>{cur.name}</div>
+            <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(32px,6vw,52px)", lineHeight: 1.05, letterSpacing: "-0.02em", color: "#4aeaac" }}>{cur.name}</div>
             {sideLabel && (
               <div style={{ width: "min(100%, 360px)", margin: "12px auto 0", display: "flex", justifyContent: side === "left" ? "flex-start" : "flex-end" }}>
                 <div style={side === "left" ? sidePillStyle : rightSidePillStyle}>
