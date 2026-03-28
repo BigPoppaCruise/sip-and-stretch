@@ -327,6 +327,7 @@ export default function SipAndStretch() {
   const [side, setSide]     = useState("left");
   const [elapsed, setElapsed] = useState(0);
   const timerRef = useRef(null);
+  const containerRef = useRef(null);
   const cur = ALL_STRETCHES[idx];
 
   const kill = useCallback(() => {
@@ -375,15 +376,15 @@ export default function SipAndStretch() {
   const reset  = () => { kill(); setIdx(0); setSide("left"); setElapsed(0); setAppState("idle"); };
 
   // Arrow-key navigation
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); skip(); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); back(); }
+  };
   useEffect(() => {
-    const onKey = (e) => {
-      if (appState !== "playing" && appState !== "paused") return;
-      if (e.key === "ArrowRight") { e.preventDefault(); skip(); }
-      else if (e.key === "ArrowLeft") { e.preventDefault(); back(); }
-    };
-    document.addEventListener("keydown", onKey, true);
-    return () => document.removeEventListener("keydown", onKey, true);
-  }); // eslint-disable-line
+    if ((appState === "playing" || appState === "paused") && containerRef.current) {
+      containerRef.current.focus();
+    }
+  }, [appState, idx, side]);
 
   const sideLabel = side === "left" ? "Left Side" : side === "right" ? "Right Side" : null;
   const sidePillStyle = { background: `${cur.blockColor}22`, border: `1px solid ${cur.blockColor}55`, borderRadius: "100px", padding: "7px 23px", fontSize: "20px", color: cur.blockColor, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, animation: "sideIn 0.35s ease, sideGlow 4.2s ease-in-out infinite", flexShrink: 0, boxShadow: `0 0 0 0 ${cur.blockColor}00`, "--glow-color": `${cur.blockColor}66`, "--glow-soft": `${cur.blockColor}22` };
@@ -428,7 +429,7 @@ export default function SipAndStretch() {
 
   // ── PLAYING / PAUSED ──────────────────────────────────────────────────────
   return (
-    <div style={{ minHeight: "100vh", maxHeight: "100vh", overflow: "hidden", background: "radial-gradient(ellipse at 70% 5%, #140f08 0%, #090806 70%)", display: "flex", flexDirection: "column", fontFamily: "'DM Sans', sans-serif", color: "#f0ece6" }}>
+    <div ref={containerRef} tabIndex={-1} onKeyDown={handleKeyDown} style={{ minHeight: "100vh", maxHeight: "100vh", overflow: "hidden", background: "radial-gradient(ellipse at 70% 5%, #140f08 0%, #090806 70%)", display: "flex", flexDirection: "column", fontFamily: "'DM Sans', sans-serif", color: "#f0ece6", outline: "none" }}>
       <Fonts />
       <style>{`
         @keyframes breathe { 0%,100%{opacity:.85;transform:scale(1)} 33.333%,50%{opacity:1;transform:scale(1.12)} }
