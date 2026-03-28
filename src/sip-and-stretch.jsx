@@ -378,11 +378,11 @@ export default function SipAndStretch() {
   useEffect(() => {
     const onKey = (e) => {
       if (appState !== "playing" && appState !== "paused") return;
-      if (e.key === "ArrowRight") skip();
-      else if (e.key === "ArrowLeft") back();
+      if (e.key === "ArrowRight") { e.preventDefault(); skip(); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); back(); }
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    document.addEventListener("keydown", onKey, true);
+    return () => document.removeEventListener("keydown", onKey, true);
   }); // eslint-disable-line
 
   const sideLabel = side === "left" ? "Left Side" : side === "right" ? "Right Side" : null;
