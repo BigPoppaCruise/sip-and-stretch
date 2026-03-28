@@ -374,6 +374,17 @@ export default function SipAndStretch() {
   };
   const reset  = () => { kill(); setIdx(0); setSide("left"); setElapsed(0); setAppState("idle"); };
 
+  // Arrow-key navigation
+  useEffect(() => {
+    if (appState !== "playing" && appState !== "paused") return;
+    const onKey = (e) => {
+      if (e.key === "ArrowRight") skip();
+      else if (e.key === "ArrowLeft") back();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }); // eslint-disable-line
+
   const sideLabel = side === "left" ? "Left Side" : side === "right" ? "Right Side" : null;
   const sidePillStyle = { background: `${cur.blockColor}22`, border: `1px solid ${cur.blockColor}55`, borderRadius: "100px", padding: "7px 23px", fontSize: "20px", color: cur.blockColor, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, animation: "sideIn 0.35s ease, sideGlow 4.2s ease-in-out infinite", flexShrink: 0, boxShadow: `0 0 0 0 ${cur.blockColor}00`, "--glow-color": `${cur.blockColor}66`, "--glow-soft": `${cur.blockColor}22` };
   const rightSidePillStyle = { background: "#9fd8c022", border: "1px solid #9fd8c055", borderRadius: "100px", padding: "7px 23px", fontSize: "20px", color: "#9fd8c0", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, animation: "sideIn 0.35s ease, sideGlow 4.2s ease-in-out infinite", flexShrink: 0, boxShadow: "0 0 0 0 #9fd8c000", "--glow-color": "#9fd8c066", "--glow-soft": "#9fd8c022" };
