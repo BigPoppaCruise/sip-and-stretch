@@ -260,7 +260,7 @@ function PoseImage({ poseKey, isModified }) {
         maxHeight: "100%",
         objectFit: "contain",
         filter,
-        animation: "breathe 12s linear infinite",
+        animation: "breathe 12s ease infinite",
         padding: "0",
         display: "block",
         borderRadius: "35px",
@@ -279,13 +279,13 @@ function CircleTimer({ elapsed, total, color, size = 96 }) {
   return (
     <div style={{ position: "relative", width: size, height: size, flexShrink: 0 }}>
       <svg width={size} height={size} style={{ transform: "rotate(-90deg)" }}>
-        <circle cx={half} cy={half} r={r} fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="5" />
-        <circle cx={half} cy={half} r={r} fill="none" stroke={color} strokeWidth="5"
+        <circle cx={half} cy={half} r={r} fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="6" />
+        <circle cx={half} cy={half} r={r} fill="none" stroke={color} strokeWidth="6"
           strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round"
           style={{ transition: "stroke-dashoffset 1s linear" }} />
       </svg>
       <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ fontSize: rem >= 60 ? `${Math.round(size * 0.215)}px` : `${Math.round(size * 0.277)}px`, fontFamily: "'Lora', serif", color: "#f0ece6", fontWeight: 300, letterSpacing: "-0.02em" }}>
+        <div style={{ fontSize: rem >= 60 ? `${Math.round(size * 0.245)}px` : `${Math.round(size * 0.315)}px`, fontFamily: "'Lora', serif", color: "#f0ece6", fontWeight: 300, letterSpacing: "-0.02em" }}>
           {fmt(rem)}
         </div>
       </div>
@@ -413,15 +413,7 @@ export default function SipAndStretch() {
       <Fonts />
       <div style={{ textAlign: "center", padding: "60px 32px", maxWidth: "520px", width: "100%" }}>
         <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(54px,11vw,88px)", color: "#f0ece6", lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: "6px" }}>Sip &amp;</div>
-        <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(54px,11vw,88px)", color: "#c9a96e", lineHeight: 0.95, letterSpacing: "-0.03em", fontStyle: "italic", marginBottom: "36px" }}>Stretch</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "44px" }}>
-          {ORDERED_BLOCKS.map(b => (
-            <div key={b.id} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "10px 18px", background: "rgba(255,255,255,0.025)", borderRadius: "10px", borderLeft: `3px solid ${b.color}` }}>
-              <div style={{ fontSize: "13px", color: "#9e9890", flex: 1, textAlign: "left" }}>{b.label}</div>
-              <div style={{ fontSize: "11px", color: "#3d3a36" }}>{blockStretchCount(b.id)} stretch{blockStretchCount(b.id) !== 1 ? "es" : ""}</div>
-            </div>
-          ))}
-        </div>
+        <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(54px,11vw,88px)", color: "#c9a96e", lineHeight: 0.95, letterSpacing: "-0.03em", fontStyle: "italic", marginBottom: "44px" }}>Stretch</div>
         <button onClick={go} style={GB}>Begin Class</button>
       </div>
     </div>
@@ -432,7 +424,12 @@ export default function SipAndStretch() {
     <div ref={containerRef} tabIndex={-1} onKeyDown={handleKeyDown} style={{ height: "100vh", overflow: "hidden", background: "radial-gradient(ellipse at 70% 5%, #140f08 0%, #090806 70%)", display: "flex", flexDirection: "column", fontFamily: "'DM Sans', sans-serif", color: "#f0ece6", outline: "none" }}>
       <Fonts />
       <style>{`
-        @keyframes breathe { 0%,100%{transform:scale(0.8)} 33.333%,50%{transform:scale(1)} }
+        @keyframes breathe {
+          0%      { transform: scale(0.8); animation-timing-function: ease-in-out; }
+          33.333% { transform: scale(1);   animation-timing-function: ease-in-out; }
+          50%     { transform: scale(1);   animation-timing-function: ease-in-out; }
+          100%    { transform: scale(0.8); }
+        }
         @keyframes sideIn  { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
         @keyframes sideGlow { 0%,100%{box-shadow:0 0 0 0 var(--glow-soft)} 50%{box-shadow:0 0 18px 3px var(--glow-color),0 0 34px 8px var(--glow-soft)} }
       `}</style>
@@ -444,9 +441,9 @@ export default function SipAndStretch() {
         <div style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center" }}>
           <div />
           <div style={{ minWidth: 0, textAlign: "center", position: "relative" }}>
-            <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(37px,6.9vw,60px)", lineHeight: 1.05, letterSpacing: "-0.02em", color: "#f0ece6" }}>{cur.name}</div>
+            <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(44px,8.1vw,71px)", lineHeight: 1.05, letterSpacing: "-0.02em", color: "#f0ece6" }}>{cur.name}</div>
             {sideLabel && (
-              <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", width: "min(100%, 360px)", marginTop: "12px", display: "flex", justifyContent: side === "left" ? "flex-start" : "flex-end" }}>
+              <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", width: "min(100%, 360px)", marginTop: "20px", display: "flex", justifyContent: side === "left" ? "flex-start" : "flex-end" }}>
                 <div style={side === "left" ? sidePillStyle : rightSidePillStyle}>
                   {sideLabel}
                 </div>
@@ -464,14 +461,14 @@ export default function SipAndStretch() {
             <div />
             <div style={{ minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 4px 8px" }}>
               <div style={{ minWidth: 0, minHeight: 0, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <div style={{ height: "100%", animation: "breathe 12s linear infinite" }}><PoseImage poseKey={cur.pose} isModified={false} /></div>
+                <div style={{ height: "100%", animation: "breathe 12s ease infinite" }}><PoseImage poseKey={cur.pose} isModified={false} /></div>
               </div>
             </div>
           </div>
         </div>
 
         {/* INSTRUCTION */}
-        <div style={{ flexShrink: 0, width: "50%", textAlign: "center", padding: "0 24px" }}>
+        <div style={{ flexShrink: 0, width: "50%", textAlign: "center", padding: "0 59px" }}>
           <div style={{ fontSize: "24px", lineHeight: 1.65, color: "#d4ccc4", fontWeight: 300, marginBottom: "5px" }}>{cur.instruction}</div>
         </div>
 
@@ -480,8 +477,7 @@ export default function SipAndStretch() {
       {/* CONTROLS */}
       <div style={{ padding: "12px 36px 20px", borderTop: "1px solid rgba(255,255,255,0.04)", display: "flex", alignItems: "center", justifyContent: "center", gap: "18px", rowGap: "14px", flexWrap: "wrap", flexShrink: 0 }}>
         <div style={{ width: "100%" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
-            <div style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: cur.blockColor, fontWeight: 600 }}>{cur.blockLabel}</div>
+          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "8px" }}>
             <div style={{ fontSize: "11px", color: "#3d3a36" }}>{idx + 1} / {ALL_STRETCHES.length}</div>
           </div>
           <div style={{ display: "flex", gap: "3px" }}>
