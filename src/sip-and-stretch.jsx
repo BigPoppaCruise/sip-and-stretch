@@ -285,7 +285,7 @@ function CircleTimer({ elapsed, total, color, size = 96 }) {
           style={{ transition: "stroke-dashoffset 1s linear" }} />
       </svg>
       <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ fontSize: rem >= 60 ? `${Math.round(size * 0.215)}px` : `${Math.round(size * 0.277)}px`, fontFamily: "'DM Serif Display', serif", color: "#f0ece6", fontWeight: 300, letterSpacing: "-0.02em" }}>
+        <div style={{ fontSize: rem >= 60 ? `${Math.round(size * 0.215)}px` : `${Math.round(size * 0.277)}px`, fontFamily: "'Lora', serif", color: "#f0ece6", fontWeight: 300, letterSpacing: "-0.02em" }}>
           {fmt(rem)}
         </div>
       </div>
@@ -294,7 +294,7 @@ function CircleTimer({ elapsed, total, color, size = 96 }) {
 }
 
 function Fonts() {
-  return <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />;
+  return <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />;
 }
 
 const GB = {
@@ -398,7 +398,7 @@ export default function SipAndStretch() {
       <Fonts />
       <div style={{ textAlign: "center", padding: "40px 24px" }}>
         <div style={{ fontSize: "72px", marginBottom: "28px" }}>🥂</div>
-        <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "52px", color: "#f0ece6", letterSpacing: "-0.02em", marginBottom: "16px" }}>That's a wrap.</div>
+        <div style={{ fontFamily: "'Lora', serif", fontSize: "52px", color: "#f0ece6", letterSpacing: "-0.02em", marginBottom: "16px" }}>That's a wrap.</div>
         <div style={{ fontSize: "17px", color: "#7a7570", fontWeight: 300, lineHeight: 1.65, maxWidth: "380px", margin: "0 auto 40px" }}>
           Your body just did the quiet kind of work. Take a sip — you earned it.
         </div>
@@ -412,8 +412,8 @@ export default function SipAndStretch() {
     <div style={{ minHeight: "100vh", background: "radial-gradient(ellipse at 25% 15%, #1c1508 0%, #0a0907 65%)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'DM Sans', sans-serif" }}>
       <Fonts />
       <div style={{ textAlign: "center", padding: "60px 32px", maxWidth: "520px", width: "100%" }}>
-        <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(54px,11vw,88px)", color: "#f0ece6", lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: "6px" }}>Sip &amp;</div>
-        <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(54px,11vw,88px)", color: "#c9a96e", lineHeight: 0.95, letterSpacing: "-0.03em", fontStyle: "italic", marginBottom: "36px" }}>Stretch</div>
+        <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(54px,11vw,88px)", color: "#f0ece6", lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: "6px" }}>Sip &amp;</div>
+        <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(54px,11vw,88px)", color: "#c9a96e", lineHeight: 0.95, letterSpacing: "-0.03em", fontStyle: "italic", marginBottom: "36px" }}>Stretch</div>
         <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "44px" }}>
           {ORDERED_BLOCKS.map(b => (
             <div key={b.id} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "10px 18px", background: "rgba(255,255,255,0.025)", borderRadius: "10px", borderLeft: `3px solid ${b.color}` }}>
@@ -429,24 +429,24 @@ export default function SipAndStretch() {
 
   // ── PLAYING / PAUSED ──────────────────────────────────────────────────────
   return (
-    <div ref={containerRef} tabIndex={-1} onKeyDown={handleKeyDown} style={{ minHeight: "100vh", maxHeight: "100vh", overflow: "hidden", background: "radial-gradient(ellipse at 70% 5%, #140f08 0%, #090806 70%)", display: "flex", flexDirection: "column", fontFamily: "'DM Sans', sans-serif", color: "#f0ece6", outline: "none" }}>
+    <div ref={containerRef} tabIndex={-1} onKeyDown={handleKeyDown} style={{ height: "100vh", overflow: "hidden", background: "radial-gradient(ellipse at 70% 5%, #140f08 0%, #090806 70%)", display: "flex", flexDirection: "column", fontFamily: "'DM Sans', sans-serif", color: "#f0ece6", outline: "none" }}>
       <Fonts />
       <style>{`
-        @keyframes breathe { 0%,100%{opacity:.85;transform:scale(1)} 33.333%,50%{opacity:1;transform:scale(1.12)} }
+        @keyframes breathe { 0%,100%{transform:scale(0.8)} 33.333%,50%{transform:scale(1)} }
         @keyframes sideIn  { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
         @keyframes sideGlow { 0%,100%{box-shadow:0 0 0 0 var(--glow-soft)} 50%{box-shadow:0 0 18px 3px var(--glow-color),0 0 34px 8px var(--glow-soft)} }
       `}</style>
 
       {/* MAIN CONTENT */}
-      <div style={{ flex: 1, display: "grid", gridTemplateRows: "auto minmax(0, 1fr) auto auto", padding: "14px 24px", gap: "12px", overflow: "hidden", minHeight: 0 }}>
+      <div style={{ flex: 1, display: "grid", gridTemplateRows: "auto minmax(0, 1fr) auto", padding: "24px 36px", gap: "12px", overflow: "hidden", minHeight: 0 }}>
 
         {/* NAME + TIMER */}
-        <div style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "flex-start" }}>
+        <div style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center" }}>
           <div />
-          <div style={{ minWidth: 0, textAlign: "center", alignSelf: "center" }}>
-            <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(32px,6vw,52px)", lineHeight: 1.05, letterSpacing: "-0.02em", color: "#f0ece6" }}>{cur.name}</div>
+          <div style={{ minWidth: 0, textAlign: "center", position: "relative" }}>
+            <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(37px,6.9vw,60px)", lineHeight: 1.05, letterSpacing: "-0.02em", color: "#f0ece6" }}>{cur.name}</div>
             {sideLabel && (
-              <div style={{ width: "min(100%, 360px)", margin: "12px auto 0", display: "flex", justifyContent: side === "left" ? "flex-start" : "flex-end" }}>
+              <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", width: "min(100%, 360px)", marginTop: "12px", display: "flex", justifyContent: side === "left" ? "flex-start" : "flex-end" }}>
                 <div style={side === "left" ? sidePillStyle : rightSidePillStyle}>
                   {sideLabel}
                 </div>
@@ -459,32 +459,26 @@ export default function SipAndStretch() {
         </div>
 
         {/* POSE CARD */}
-        <div style={{ display: "flex", flex: 1, minHeight: 0, justifyContent: "center" }}>
-          <div style={{ width: "min(100%, 1200px)", minHeight: 0, display: "grid", gridTemplateRows: "0fr minmax(0, 14fr) 0.5fr" }}>
+        <div style={{ display: "flex", flex: 1, minHeight: 0, justifyContent: "flex-start" }}>
+          <div style={{ width: "50%", minHeight: 0, display: "grid", gridTemplateRows: "0fr minmax(0, 14fr) 0.5fr", padding: "0 24px" }}>
             <div />
             <div style={{ minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 4px 8px" }}>
               <div style={{ minWidth: 0, minHeight: 0, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <PoseImage poseKey={cur.pose} isModified={false} />
+                <div style={{ height: "100%", animation: "breathe 12s linear infinite" }}><PoseImage poseKey={cur.pose} isModified={false} /></div>
               </div>
             </div>
           </div>
         </div>
 
         {/* INSTRUCTION */}
-        <div style={{ flexShrink: 0, justifySelf: "center", width: "min(100%, 620px)", textAlign: "center" }}>
+        <div style={{ flexShrink: 0, width: "50%", textAlign: "center", padding: "0 24px" }}>
           <div style={{ fontSize: "24px", lineHeight: 1.65, color: "#d4ccc4", fontWeight: 300, marginBottom: "5px" }}>{cur.instruction}</div>
         </div>
 
-        {/* NEXT UP */}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "9px 14px", background: "rgba(255,255,255,0.02)", borderRadius: "8px", flexShrink: 0, justifySelf: "end" }}>
-          <div style={{ fontSize: "9px", color: "#3d3a36", textTransform: "uppercase", letterSpacing: "0.12em", whiteSpace: "nowrap", fontWeight: 600 }}>Up next</div>
-          <div style={{ flex: 1, fontSize: "12px", color: "#5e5a54" }}>{rightNext ? `${cur.name} — Right Side` : nextS ? nextS.name : "You're done"}</div>
-          {!rightNext && nextS && <div style={{ fontSize: "10px", color: "#3d3a36" }}>{fmt(nextS.duration)}s</div>}
-        </div>
       </div>
 
       {/* CONTROLS */}
-      <div style={{ padding: "12px 24px 20px", borderTop: "1px solid rgba(255,255,255,0.04)", display: "flex", alignItems: "center", justifyContent: "center", gap: "18px", rowGap: "14px", flexWrap: "wrap", flexShrink: 0 }}>
+      <div style={{ padding: "12px 36px 20px", borderTop: "1px solid rgba(255,255,255,0.04)", display: "flex", alignItems: "center", justifyContent: "center", gap: "18px", rowGap: "14px", flexWrap: "wrap", flexShrink: 0 }}>
         <div style={{ width: "100%" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
             <div style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: cur.blockColor, fontWeight: 600 }}>{cur.blockLabel}</div>
@@ -492,7 +486,7 @@ export default function SipAndStretch() {
           </div>
           <div style={{ display: "flex", gap: "3px" }}>
             {ALL_STRETCHES.map((_, i) => (
-              <div key={i} style={{ height: "2px", flex: 1, borderRadius: "2px", background: i < idx ? cur.blockColor : i === idx ? `${cur.blockColor}88` : "rgba(255,255,255,0.08)", transition: "background 0.4s" }} />
+              <div key={i} style={{ height: "6px", flex: 1, borderRadius: "6px", background: i < idx ? cur.blockColor : i === idx ? `${cur.blockColor}88` : "rgba(255,255,255,0.08)", transition: "background 0.4s" }} />
             ))}
           </div>
         </div>
