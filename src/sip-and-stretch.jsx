@@ -161,11 +161,11 @@ const CLASS_DATA = {
           standard: { label: "Full Forward Fold", description: "Legs straight, feet flexed. Hinge from hips with a flat back. Reach toward feet wherever they land." },
           modified: { label: "Bent Knees", description: "Bend your knees significantly to remove strain from the lower back. Gradually work toward straightening over time." }
         },
-        { id: 14, name: "Thorasic Twist", duration: 120, pose: "thoracicExt", bilateral: true,
-          instruction: "Hand behind your head, elbow wide. Inhale, then exhale and gently arch your upper back and twist upward.",
-          muscleInfo: "Thoracic spine — locked up by desk posture, phone posture, and rowing mechanics.",
-          standard: { label: "Seated T-Spine Opener", description: "Hands interlaced behind head, elbows wide. Inhale, then exhale and gently arch the upper back." },
-          modified: { label: "Over Rolled Towel", description: "Lie on your back, towel across mid-back. Arms out to sides. Let gravity open the chest." }
+        { id: 14, name: "Frog Stretch", duration: 120, pose: "frogStretch", bilateral: false,
+          instruction: "Come to all fours, then widen your knees out to the sides as far as feels good. Lower onto your forearms. Keep your feet in line with your knees and breathe into the inner thighs.",
+          muscleInfo: "Adductors and inner hips — the deep groin tissue that gets locked from rowing, squats, and long stretches of sitting.",
+          standard: { label: "Forearm Frog", description: "Knees wide, feet in line with knees, ankles flexed. Forearms down, hips sinking back gently. Stay still and breathe." },
+          modified: { label: "Half Frog", description: "One knee wide and bent, the other leg extended back. Less intensity through the inner thigh, easier on the knees." }
         }
       ]
     },
@@ -217,7 +217,7 @@ const CUSTOM_STRETCHES = {
 
 const STRETCHES_BY_ID = { ...RAW_STRETCHES_BY_ID, ...CUSTOM_STRETCHES };
 
-const ORDERED_STRETCH_IDS = [1, 2, 3, 7, 15, 17, 9, 20, 16, 22, 11, 10, 4, 23, 5, 13, 12, 8, 21, 6, 14, 18];
+const ORDERED_STRETCH_IDS = [1, 2, 3, 7, 15, 17, 9, 20, 16, 22, 11, 10, 4, 23, 5, 13, 14, 12, 8, 21, 6, 18];
 
 const ALL_STRETCHES = ORDERED_STRETCH_IDS
   .map(id => STRETCHES_BY_ID[id])
@@ -225,6 +225,8 @@ const ALL_STRETCHES = ORDERED_STRETCH_IDS
 
 const blockStretchCount = blockId =>
   ALL_STRETCHES.filter(stretch => stretch.blockId === blockId).length;
+
+const INDIGO = "#8879d8";
 
 function fmt(s) {
   const m = Math.floor(s / 60), sec = s % 60;
@@ -255,16 +257,15 @@ function PoseImage({ poseKey, isModified }) {
       onError={() => setErr(true)}
       style={{
         width: "auto",
-        height: "100%",
+        height: "auto",
         maxWidth: "100%",
         maxHeight: "100%",
-        objectFit: "contain",
         filter,
+        opacity: 0.6,
         animation: "breathe 12s ease infinite",
         padding: "0",
         display: "block",
-        borderRadius: "35px",
-        clipPath: "inset(0 round 35px)"
+        borderRadius: "35px"
       }}
     />
   );
@@ -274,7 +275,7 @@ function CircleTimer({ elapsed, total, color, size = 96 }) {
   const half = size / 2;
   const r = half - 6;
   const circ = 2 * Math.PI * r;
-  const offset = circ * (1 - Math.min(1, elapsed / total));
+  const offset = circ * Math.min(1, elapsed / total);
   const rem = Math.max(0, total - elapsed);
   return (
     <div style={{ position: "relative", width: size, height: size, flexShrink: 0 }}>
@@ -294,7 +295,7 @@ function CircleTimer({ elapsed, total, color, size = 96 }) {
 }
 
 function Fonts() {
-  return <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />;
+  return <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />;
 }
 
 const GB = {
@@ -375,10 +376,15 @@ export default function SipAndStretch() {
   };
   const reset  = () => { kill(); setIdx(0); setSide("left"); setElapsed(0); setAppState("idle"); };
 
-  // Arrow-key navigation
+  // Arrow-key navigation + spacebar pause/resume
   const handleKeyDown = (e) => {
     if (e.key === "ArrowRight") { e.preventDefault(); skip(); }
     else if (e.key === "ArrowLeft") { e.preventDefault(); back(); }
+    else if (e.key === " " || e.code === "Space") {
+      e.preventDefault();
+      if (appState === "playing") pause();
+      else if (appState === "paused") resume();
+    }
   };
   useEffect(() => {
     if ((appState === "playing" || appState === "paused") && containerRef.current) {
@@ -398,10 +404,7 @@ export default function SipAndStretch() {
       <Fonts />
       <div style={{ textAlign: "center", padding: "40px 24px" }}>
         <div style={{ fontSize: "72px", marginBottom: "28px" }}>🥂</div>
-        <div style={{ fontFamily: "'Lora', serif", fontSize: "52px", color: "#f0ece6", letterSpacing: "-0.02em", marginBottom: "16px" }}>That's a wrap.</div>
-        <div style={{ fontSize: "17px", color: "#7a7570", fontWeight: 300, lineHeight: 1.65, maxWidth: "380px", margin: "0 auto 40px" }}>
-          Your body just did the quiet kind of work. Take a sip — you earned it.
-        </div>
+        <div style={{ fontFamily: "'Lora', serif", fontSize: "52px", color: "#f0ece6", letterSpacing: "-0.02em", marginBottom: "40px" }}>That's a wrap.</div>
         <button onClick={reset} style={GB}>Run Again</button>
       </div>
     </div>
@@ -441,9 +444,9 @@ export default function SipAndStretch() {
         <div style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center" }}>
           <div />
           <div style={{ minWidth: 0, textAlign: "center", position: "relative" }}>
-            <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(44px,8.1vw,71px)", lineHeight: 1.05, letterSpacing: "-0.02em", color: "#f0ece6" }}>{cur.name}</div>
+            <div style={{ fontFamily: "'Noto Serif JP', serif", fontSize: "clamp(51px,9.3vw,82px)", lineHeight: 1.05, letterSpacing: "-0.02em", color: "#f0ece6" }}>{cur.name}</div>
             {sideLabel && (
-              <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", width: "min(100%, 360px)", marginTop: "20px", display: "flex", justifyContent: side === "left" ? "flex-start" : "flex-end" }}>
+              <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", width: "min(100%, 360px)", marginTop: "30px", display: "flex", justifyContent: side === "left" ? "flex-start" : "flex-end" }}>
                 <div style={side === "left" ? sidePillStyle : rightSidePillStyle}>
                   {sideLabel}
                 </div>
@@ -451,7 +454,7 @@ export default function SipAndStretch() {
             )}
           </div>
           <div style={{ justifySelf: "end" }}>
-            <CircleTimer elapsed={elapsed} total={cur.duration} color={cur.blockColor} size={234} />
+            <CircleTimer elapsed={elapsed} total={cur.duration} color={INDIGO} size={234} />
           </div>
         </div>
 
@@ -461,15 +464,15 @@ export default function SipAndStretch() {
             <div />
             <div style={{ minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 4px 8px" }}>
               <div style={{ minWidth: 0, minHeight: 0, height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <div style={{ height: "100%", animation: "breathe 12s ease infinite" }}><PoseImage poseKey={cur.pose} isModified={false} /></div>
+                <div style={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center", animation: "breathe 12s ease infinite" }}><PoseImage poseKey={cur.pose} isModified={false} /></div>
               </div>
             </div>
           </div>
         </div>
 
         {/* INSTRUCTION */}
-        <div style={{ flexShrink: 0, width: "50%", textAlign: "center", padding: "0 59px" }}>
-          <div style={{ fontSize: "24px", lineHeight: 1.65, color: "#d4ccc4", fontWeight: 300, marginBottom: "5px" }}>{cur.instruction}</div>
+        <div style={{ flexShrink: 0, width: "100%", textAlign: "center", padding: "0 59px" }}>
+          <div style={{ fontFamily: "'Lilita One', cursive", fontSize: "31px", lineHeight: 1.65, color: "#d4ccc4", fontWeight: 300, marginBottom: "5px" }}>{cur.instruction}</div>
         </div>
 
       </div>
@@ -482,16 +485,10 @@ export default function SipAndStretch() {
           </div>
           <div style={{ display: "flex", gap: "3px" }}>
             {ALL_STRETCHES.map((_, i) => (
-              <div key={i} style={{ height: "6px", flex: 1, borderRadius: "6px", background: i < idx ? cur.blockColor : i === idx ? `${cur.blockColor}88` : "rgba(255,255,255,0.08)", transition: "background 0.4s" }} />
+              <div key={i} style={{ height: "6px", flex: 1, borderRadius: "6px", background: i < idx ? INDIGO : i === idx ? `${INDIGO}88` : "rgba(255,255,255,0.08)", transition: "background 0.4s" }} />
             ))}
           </div>
         </div>
-        <button onClick={back} style={IB("#3d3a36", false)}>‹‹</button>
-        {appState === "playing"
-          ? <button onClick={pause}  style={IB(cur.blockColor, true, true)}>⏸</button>
-          : <button onClick={resume} style={{ ...IB(cur.blockColor, true, true), background: `linear-gradient(135deg, ${cur.blockColor}, ${cur.blockColor}aa)`, color: "#0a0907", boxShadow: `0 4px 18px ${cur.blockColor}44` }}>▶</button>
-        }
-        <button onClick={skip} style={IB("#3d3a36", false)}>{cur.bilateral && side === "left" ? "R ›" : "›› "}</button>
       </div>
     </div>
   );
