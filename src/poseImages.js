@@ -3,6 +3,7 @@
 
 const POSE_IMAGES = {
   "breathwork": "/poses/savasana.png",
+  "butterfly": "/poses/butterfly.png",
   "figureFour": "/poses/figureFour.png",
   "supineHipFlex": "/poses/supineHipFlex.png",
   "lowLunge": "/poses/lowLunge.png",
@@ -19,6 +20,7 @@ const POSE_IMAGES = {
   "chestOpener": "/poses/chestOpener.png",
   "crossBody": "/poses/crossBody.png",
   "thoracicExt": "/poses/thoracicExt.png",
+  "frogStretch": "/poses/frogStretch.png",
   "spinalTwist": "/poses/spinalTwist.png",
   "catCow": "/poses/catCow.png",
   "happyBaby": "/poses/happyBaby.png",
