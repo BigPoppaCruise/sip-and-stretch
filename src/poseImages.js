@@ -3,6 +3,7 @@
 
 const POSE_IMAGES = {
   "breathwork": "/poses/savasana.png",
+  "butterfly": "/poses/butterfly.png",
   "figureFour": "/poses/figureFour.png",
   "supineHipFlex": "/poses/supineHipFlex.png",
   "lowLunge": "/poses/lowLunge.png",

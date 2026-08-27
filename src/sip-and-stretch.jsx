@@ -18,11 +18,11 @@ const CLASS_DATA = {
     {
       id: "supine", label: "Supine", color: "#b87d5e",
       stretches: [
-        { id: 2, name: "Figure Four", duration: 120, pose: "figureFour", bilateral: true,
-          instruction: "Cross one ankle over the opposite knee. Flex the top foot. Gently draw both legs toward your chest.",
-          muscleInfo: "Piriformis and glute medius — the stabilizers behind every step on the treadmill.",
-          standard: { label: "Supine Figure Four", description: "Lying on back — cross ankle over quad above the knee. Interlace hands behind bottom thigh and draw toward chest." },
-          modified: { label: "Wall-Supported", description: "Press bottom foot flat against wall with knee at 90°. Cross ankle over quad and let gravity do the work." }
+        { id: 2, name: "Reclined Butterfly", duration: 180, pose: "butterfly", bilateral: false,
+          instruction: "Lie back, bring the soles of your feet together, and let your knees fall open wide. Rest your hands on your ribs and let gravity do the work.",
+          muscleInfo: "Adductors and inner groin — the one area treadmill, rower, and floor work never touch. Every stride and stroke moves straight ahead; this opens what gets left behind.",
+          standard: { label: "Supta Baddha Konasana", description: "Soles of feet together, knees wide and heavy. Arms at sides or hands resting on ribs. Nothing to hold — just release." },
+          modified: { label: "Supported Knees", description: "Slide your feet farther from your hips, or place a pillow under each outer thigh to soften the inner-knee pull." }
         },
         { id: 3, name: "Knee to Chest", duration: 90, pose: "supineHipFlex", bilateral: true,
           instruction: "Lying on your back — extend one leg long on the mat. Draw the opposite knee gently into your chest.",
@@ -36,13 +36,13 @@ const CLASS_DATA = {
           standard: { label: "Leg Raise Hold", description: "One leg flat, one raised. Hold behind calf or thigh. Flex foot, toes toward shin. Both hips grounded." },
           modified: { label: "Strap or Towel", description: "Loop a belt or towel around the arch of the lifted foot. Hold both ends — removes flexibility requirement." }
         },
-        { id: 15, name: "Supine Spinal Twist", duration: 120, pose: "spinalTwist", bilateral: true,
+        { id: 15, name: "Supine Spinal Twist", duration: 90, pose: "spinalTwist", bilateral: true,
           instruction: "Lying on your back, draw one knee to your chest and guide it across your body. Arm out at shoulder height. Gaze opposite.",
           muscleInfo: "Paraspinal muscles along the spine — compressed during every forward-hinge movement in OTF floor work.",
           standard: { label: "Full Twist", description: "Knee crosses body, shoulder stays grounded. Opposite hand gently on crossed knee. Hold completely still." },
           modified: { label: "Bolstered Knee", description: "Pillow under the crossed knee so it doesn't hang. Reduces rotation intensity for those with lower back sensitivity." }
         },
-        { id: 17, name: "Happy Baby", duration: 120, pose: "happyBaby", bilateral: false,
+        { id: 17, name: "Happy Baby", duration: 90, pose: "happyBaby", bilateral: false,
           instruction: "On your back, grab the outer edges of your feet. Draw knees wide toward your armpits. Rock gently side to side.",
           muscleInfo: "Sacrum — the triangular bone at the base of your spine that bears enormous load through every rowing stroke.",
           standard: { label: "Ananda Balasana", description: "Reach and hold outer edges of both feet or ankles. Knees wide. Rock gently like a slow hammock." },
@@ -89,11 +89,17 @@ const CLASS_DATA = {
           standard: { label: "Kneeling Lunge", description: "Front knee over ankle, back knee on mat. Hands on front knee, chest tall. Option: arms overhead to deepen." },
           modified: { label: "Hands on Floor", description: "Both hands on the floor on either side of front foot for support. Only lower as far as comfortable." }
         },
-        { id: 5, name: "Pigeon Pose", duration: 120, pose: "pigeon", bilateral: true,
+        { id: 5, name: "Pigeon Pose", duration: 90, pose: "pigeon", bilateral: true,
           instruction: "From a lunge, bring your front shin across the mat. Sink hips toward the floor. Fold your chest forward.",
           muscleInfo: "Piriformis and deep glute — the deepest hip external rotator stretch available. Chronically loaded from rowing and running.",
           standard: { label: "Full Pigeon", description: "Front shin angled or parallel to mat. Back leg extends behind. Fold chest over front shin onto forearms or forehead." },
           modified: { label: "Reclined Figure Four", description: "Stay on your back in figure four position — identical hip stretch with zero pressure on the knee." }
+        },
+        { id: 14, name: "Frog Stretch", duration: 180, pose: "frogStretch", bilateral: false,
+          instruction: "Come to all fours, then widen your knees out to the sides as far as feels good. Lower onto your forearms. Keep your feet in line with your knees and breathe into the inner thighs.",
+          muscleInfo: "Adductors and inner hips — the deep groin tissue that gets locked from rowing, squats, and long stretches of sitting.",
+          standard: { label: "Forearm Frog", description: "Knees wide, feet in line with knees, ankles flexed. Forearms down, hips sinking back gently. Stay still and breathe." },
+          modified: { label: "Half Frog", description: "One knee wide and bent, the other leg extended back. Less intensity through the inner thigh, easier on the knees." }
         }
       ]
     },
@@ -110,10 +116,10 @@ const CLASS_DATA = {
     {
       id: "break2", label: "Break", color: "#c9a96e",
       stretches: [{
-        id: 19, name: "Sip Break â€” Round Two", duration: 120, pose: "sipBreak", bilateral: false,
+        id: 23, name: "Sip Break — Round Two", duration: 180, pose: "sipBreak", bilateral: false,
         instruction: "Stand, move naturally, sip, breathe. A few gentle hip circles or shoulder rolls if it feels good.",
-        muscleInfo: "Intentional rest is part of recovery. The nervous system integrates work during stillness â€” not just during movement.",
-        standard: { label: "Rest & Reset", description: "Move naturally. Hydrate. Enjoy. You're halfway through." },
+        muscleInfo: "Intentional rest is part of recovery. The nervous system integrates work during stillness — not just during movement.",
+        standard: { label: "Rest & Reset", description: "Move naturally. Hydrate. Enjoy. The home stretch is ahead." },
         modified: null
       }]
     },
@@ -143,12 +149,6 @@ const CLASS_DATA = {
     {
       id: "seated", label: "Seated", color: "#6b9bb8",
       stretches: [
-        { id: 19, name: "Sip Break — Round Two", duration: 120, pose: "sipBreak", bilateral: false,
-          instruction: "Stand, move naturally, sip, breathe. A few gentle hip circles or shoulder rolls if it feels good.",
-          muscleInfo: "Intentional rest is part of recovery. The nervous system integrates work during stillness — not just during movement.",
-          standard: { label: "Rest & Reset", description: "Move naturally. Hydrate. Enjoy. You're halfway through." },
-          modified: null
-        },
         { id: 21, name: "Side Bend", duration: 90, pose: "sideBend", bilateral: true,
           instruction: "Sit tall with one hand grounded beside you. Reach the other arm overhead and arc gently to the side. Keep both sit bones heavy and breathe into the open ribs.",
           muscleInfo: "Lats and obliques - this opens the side body that tightens with rowing, running arm drive, and long hours at a desk.",
@@ -160,21 +160,15 @@ const CLASS_DATA = {
           muscleInfo: "Hamstrings, calves, and lower back — the entire posterior chain that takes the most load during rowing and floor work.",
           standard: { label: "Full Forward Fold", description: "Legs straight, feet flexed. Hinge from hips with a flat back. Reach toward feet wherever they land." },
           modified: { label: "Bent Knees", description: "Bend your knees significantly to remove strain from the lower back. Gradually work toward straightening over time." }
-        },
-        { id: 14, name: "Frog Stretch", duration: 120, pose: "frogStretch", bilateral: false,
-          instruction: "Come to all fours, then widen your knees out to the sides as far as feels good. Lower onto your forearms. Keep your feet in line with your knees and breathe into the inner thighs.",
-          muscleInfo: "Adductors and inner hips — the deep groin tissue that gets locked from rowing, squats, and long stretches of sitting.",
-          standard: { label: "Forearm Frog", description: "Knees wide, feet in line with knees, ankles flexed. Forearms down, hips sinking back gently. Stay still and breathe." },
-          modified: { label: "Half Frog", description: "One knee wide and bent, the other leg extended back. Less intensity through the inner thigh, easier on the knees." }
         }
       ]
     },
     {
       id: "closing", label: "Closing", color: "#c9a96e",
       stretches: [
-        { id: 18, name: "Savasana", duration: 120, pose: "savasana", bilateral: false,
+        { id: 18, name: "Savasana", duration: 300, pose: "savasana", bilateral: false,
           instruction: "Legs extended, palms facing up, arms slightly away from your body. Close your eyes. There is nothing left to do.",
-          muscleInfo: "The nervous system consolidates the benefits of stretching during complete stillness. This is the most important two minutes.",
+          muscleInfo: "The nervous system consolidates the benefits of stretching during complete stillness. This is the most important five minutes.",
           standard: { label: "Full Rest", description: "Completely flat. Legs relaxed and falling open naturally. Arms slightly away from body, palms up. Eyes closed." },
           modified: null
         }
@@ -198,33 +192,13 @@ const RAW_STRETCHES_BY_ID = Object.fromEntries(
   )
 );
 
-const CUSTOM_STRETCHES = {
-  23: {
-    id: 23,
-    name: "Sip Break - Round Two",
-    duration: 180,
-    pose: "sipBreak",
-    bilateral: false,
-    instruction: "Stand, move naturally, sip, breathe. A few gentle hip circles or shoulder rolls if it feels good.",
-    muscleInfo: "Intentional rest is part of recovery. The nervous system integrates work during stillness - not just during movement.",
-    standard: { label: "Rest & Reset", description: "Move naturally. Hydrate. Enjoy. You're halfway through." },
-    modified: null,
-    blockId: "break2",
-    blockColor: "#c9a96e",
-    blockLabel: "Break",
-  },
-};
+const STRETCHES_BY_ID = RAW_STRETCHES_BY_ID;
 
-const STRETCHES_BY_ID = { ...RAW_STRETCHES_BY_ID, ...CUSTOM_STRETCHES };
-
-const ORDERED_STRETCH_IDS = [1, 2, 3, 7, 15, 17, 9, 20, 16, 22, 11, 10, 4, 23, 5, 13, 14, 12, 8, 21, 6, 18];
+const ORDERED_STRETCH_IDS = [1, 2, 3, 7, 15, 17, 9, 20, 16, 22, 11, 10, 4, 5, 14, 23, 13, 12, 8, 21, 6, 18];
 
 const ALL_STRETCHES = ORDERED_STRETCH_IDS
   .map(id => STRETCHES_BY_ID[id])
   .filter(Boolean);
-
-const blockStretchCount = blockId =>
-  ALL_STRETCHES.filter(stretch => stretch.blockId === blockId).length;
 
 const INDIGO = "#8879d8";
 
@@ -368,7 +342,7 @@ export default function SipAndStretch() {
   const go     = () => { setAppState("playing"); setIdx(0); setSide(ALL_STRETCHES[0].bilateral ? "left" : "single"); setElapsed(0); };
   const pause  = () => { setAppState("paused"); kill(); };
   const resume = () => setAppState("playing");
-  const skip   = () => { kill(); setElapsed(0); advance(idx, side, cur); if (appState === "playing") setAppState("playing"); };
+  const skip   = () => { kill(); setElapsed(0); advance(idx, side, cur); };
   const back   = () => {
     kill(); setElapsed(0);
     if (cur.bilateral && side === "right") setSide("left");
@@ -395,9 +369,6 @@ export default function SipAndStretch() {
   const sideLabel = side === "left" ? "Left Side" : side === "right" ? "Right Side" : null;
   const sidePillStyle = { background: `${cur.blockColor}22`, border: `1px solid ${cur.blockColor}55`, borderRadius: "100px", padding: "7px 23px", fontSize: "20px", color: cur.blockColor, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, animation: "sideIn 0.35s ease, sideGlow 4.2s ease-in-out infinite", flexShrink: 0, boxShadow: `0 0 0 0 ${cur.blockColor}00`, "--glow-color": `${cur.blockColor}66`, "--glow-soft": `${cur.blockColor}22` };
   const rightSidePillStyle = { background: "#9fd8c022", border: "1px solid #9fd8c055", borderRadius: "100px", padding: "7px 23px", fontSize: "20px", color: "#9fd8c0", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, animation: "sideIn 0.35s ease, sideGlow 4.2s ease-in-out infinite", flexShrink: 0, boxShadow: "0 0 0 0 #9fd8c000", "--glow-color": "#9fd8c066", "--glow-soft": "#9fd8c022" };
-  const nextS     = ALL_STRETCHES[idx + 1];
-  const rightNext = cur.bilateral && side === "left";
-
   // ── DONE ──────────────────────────────────────────────────────────────────
   if (appState === "done") return (
     <div style={{ minHeight: "100vh", background: "#0a0907", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'DM Sans', sans-serif" }}>
