@@ -22,6 +22,15 @@ the program:
 3. If the user reports the app "doesn't show the changes," the first hypothesis
    is a stale or divergent copy, not a bug.
 
+## "How do I start Sip & Stretch?"
+
+When the owner asks how to start, run, or open the class (any wording — "remind
+me how to start sip and stretch", "how do I run it", etc.), the answer is
+always: **double-click `Start Sip and Stretch.cmd`** in the project folder
+(`C:\Users\shayn\sip-and-stretch` on their PC). It auto-pulls the latest `main`
+and opens the class. Do not point them at npm, dev servers, or `dist/index.html`
+directly — the .cmd file is the one button.
+
 ## Where things live
 
 - **The entire program** (stretch data + play order): `src/sip-and-stretch.jsx`
