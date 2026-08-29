@@ -46,12 +46,13 @@ the program:
 
 - 2026-08-29: program review landed on `main` (savasana 5:00, pigeon moved
   before break 2, trims, butterfly + neck release images, skip-on-last-stretch
-  bug fix). Superseded/stale branches were deleted after merging; their final
-  SHAs, recoverable via reflog or these ids: `claude/add-exercise-arrow-navigation-6oL7r`
-  = afdfe2e (fully absorbed into main), `claude/funny-pike` = 3dfa795 and
-  `claude/adjust-exercise-image-layout-jTcq0` = 79c300c (same-day March
-  experiments, superseded by the April UI rework), review branch
-  `claude/sip-stretch-program-review-rgui66` (merged via PR #1 and a follow-up).
+  bug fix). Any `claude/*` branches still on the remote are DEAD — fully
+  absorbed into or superseded by `main`: `claude/add-exercise-arrow-navigation-6oL7r`
+  (afdfe2e, absorbed), `claude/funny-pike` (3dfa795) and
+  `claude/adjust-exercise-image-layout-jTcq0` (79c300c, same-day March
+  experiments superseded by the April UI rework), and the review branch
+  `claude/sip-stretch-program-review-rgui66` (merged via PRs #1/#2). Never
+  base new work on them; branch from `main`. It is safe to delete them.
 - The one-off "Frog Stretch" and "Happy Baby" were deliberately REMOVED from the
   program by the owner (replaced by seated Butterfly and Neck Release). Do not
   reintroduce them from old branches or old research summaries.
