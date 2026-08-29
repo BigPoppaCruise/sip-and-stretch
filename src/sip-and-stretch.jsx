@@ -18,11 +18,11 @@ const CLASS_DATA = {
     {
       id: "supine", label: "Supine", color: "#b87d5e",
       stretches: [
-        { id: 2, name: "Reclined Butterfly", duration: 180, pose: "butterfly", bilateral: false,
-          instruction: "Lie back, bring the soles of your feet together, and let your knees fall open wide. Rest your hands on your ribs and let gravity do the work.",
-          muscleInfo: "Adductors and inner groin — the one area treadmill, rower, and floor work never touch. Every stride and stroke moves straight ahead; this opens what gets left behind.",
-          standard: { label: "Supta Baddha Konasana", description: "Soles of feet together, knees wide and heavy. Arms at sides or hands resting on ribs. Nothing to hold — just release." },
-          modified: { label: "Supported Knees", description: "Slide your feet farther from your hips, or place a pillow under each outer thigh to soften the inner-knee pull." }
+        { id: 2, name: "Figure Four", duration: 90, pose: "figureFour", bilateral: true,
+          instruction: "Cross one ankle over the opposite knee. Flex the top foot. Gently draw both legs toward your chest.",
+          muscleInfo: "Piriformis and glute medius — the stabilizers behind every step on the treadmill.",
+          standard: { label: "Supine Figure Four", description: "Lying on back — cross ankle over quad above the knee. Interlace hands behind bottom thigh and draw toward chest." },
+          modified: { label: "Wall-Supported", description: "Press bottom foot flat against wall with knee at 90°. Cross ankle over quad and let gravity do the work." }
         },
         { id: 3, name: "Knee to Chest", duration: 90, pose: "supineHipFlex", bilateral: true,
           instruction: "Lying on your back — extend one leg long on the mat. Draw the opposite knee gently into your chest.",
@@ -42,11 +42,11 @@ const CLASS_DATA = {
           standard: { label: "Full Twist", description: "Knee crosses body, shoulder stays grounded. Opposite hand gently on crossed knee. Hold completely still." },
           modified: { label: "Bolstered Knee", description: "Pillow under the crossed knee so it doesn't hang. Reduces rotation intensity for those with lower back sensitivity." }
         },
-        { id: 17, name: "Happy Baby", duration: 90, pose: "happyBaby", bilateral: false,
-          instruction: "On your back, grab the outer edges of your feet. Draw knees wide toward your armpits. Rock gently side to side.",
-          muscleInfo: "Sacrum — the triangular bone at the base of your spine that bears enormous load through every rowing stroke.",
-          standard: { label: "Ananda Balasana", description: "Reach and hold outer edges of both feet or ankles. Knees wide. Rock gently like a slow hammock." },
-          modified: { label: "Half Happy Baby", description: "One leg at a time, other foot flat on floor. Or loop a strap around the foot instead of holding directly." }
+        { id: 17, name: "Neck Release", duration: 90, pose: "neckRelease", bilateral: true,
+          instruction: "Lying on your back, let your head rest heavy on the mat. Slowly tilt one ear toward that shoulder until you feel a soft stretch up the side of the neck. Keep the opposite shoulder anchored down and breathe.",
+          muscleInfo: "Upper trapezius and levator scapulae — the neck and shoulder tension that stacks up from rowing posture, treadmill gripping, and long hours hunched at a desk.",
+          standard: { label: "Supported Ear to Shoulder", description: "Ear drifts toward the shoulder, opposite shoulder relaxing down and away. Rest the same-side hand lightly on your head for a touch more weight — never pull. Turn the nose slightly down to find the levator." },
+          modified: { label: "Seated & Anchored", description: "Sit tall in a chair or cross-legged. Tuck the opposite hand under your thigh to keep that shoulder down, then tilt the ear toward your shoulder. Easier to control how deep you go." }
         }
       ]
     },
@@ -94,12 +94,6 @@ const CLASS_DATA = {
           muscleInfo: "Piriformis and deep glute — the deepest hip external rotator stretch available. Chronically loaded from rowing and running.",
           standard: { label: "Full Pigeon", description: "Front shin angled or parallel to mat. Back leg extends behind. Fold chest over front shin onto forearms or forehead." },
           modified: { label: "Reclined Figure Four", description: "Stay on your back in figure four position — identical hip stretch with zero pressure on the knee." }
-        },
-        { id: 14, name: "Frog Stretch", duration: 180, pose: "frogStretch", bilateral: false,
-          instruction: "Come to all fours, then widen your knees out to the sides as far as feels good. Lower onto your forearms. Keep your feet in line with your knees and breathe into the inner thighs.",
-          muscleInfo: "Adductors and inner hips — the deep groin tissue that gets locked from rowing, squats, and long stretches of sitting.",
-          standard: { label: "Forearm Frog", description: "Knees wide, feet in line with knees, ankles flexed. Forearms down, hips sinking back gently. Stay still and breathe." },
-          modified: { label: "Half Frog", description: "One knee wide and bent, the other leg extended back. Less intensity through the inner thigh, easier on the knees." }
         }
       ]
     },
@@ -160,6 +154,12 @@ const CLASS_DATA = {
           muscleInfo: "Hamstrings, calves, and lower back — the entire posterior chain that takes the most load during rowing and floor work.",
           standard: { label: "Full Forward Fold", description: "Legs straight, feet flexed. Hinge from hips with a flat back. Reach toward feet wherever they land." },
           modified: { label: "Bent Knees", description: "Bend your knees significantly to remove strain from the lower back. Gradually work toward straightening over time." }
+        },
+        { id: 14, name: "Butterfly Stretch", duration: 90, pose: "butterfly", bilateral: false,
+          instruction: "Sit tall and bring the soles of your feet together, letting your knees fall open to the sides. Hold your ankles, lengthen your spine, then gently fold forward from the hips.",
+          muscleInfo: "Adductors and inner hips — the deep groin tissue that gets locked from the rowing stroke, squats, and long stretches of sitting.",
+          standard: { label: "Baddha Konasana", description: "Soles of the feet together, heels drawn in toward the body. Sit tall, let the knees release toward the floor, and optionally fold forward from the hips." },
+          modified: { label: "Elevated & Supported", description: "Sit up on a folded blanket and slide the feet further forward to ease the groin. Rest cushions or blocks under the knees so they have something to lean into." }
         }
       ]
     },
@@ -194,7 +194,7 @@ const RAW_STRETCHES_BY_ID = Object.fromEntries(
 
 const STRETCHES_BY_ID = RAW_STRETCHES_BY_ID;
 
-const ORDERED_STRETCH_IDS = [1, 2, 3, 7, 15, 17, 9, 20, 16, 22, 11, 10, 4, 5, 14, 23, 13, 12, 8, 21, 6, 18];
+const ORDERED_STRETCH_IDS = [1, 2, 3, 7, 15, 17, 9, 20, 16, 22, 11, 10, 4, 5, 23, 13, 12, 8, 21, 14, 6, 18];
 
 const ALL_STRETCHES = ORDERED_STRETCH_IDS
   .map(id => STRETCHES_BY_ID[id])

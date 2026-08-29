@@ -4,75 +4,66 @@
       <stop offset="0" stop-color="#7b6cc0"/>
       <stop offset="1" stop-color="#5d5099"/>
     </linearGradient>
-    <linearGradient id="skinArm" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#f5a48a"/>
-      <stop offset="1" stop-color="#ef7f92"/>
-    </linearGradient>
-    <linearGradient id="skinLit" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#f9b899"/>
-      <stop offset="1" stop-color="#f2917e"/>
+      <stop offset="1" stop-color="#ef7f92"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
       <stop offset="0" stop-color="#8d7cd6" stop-opacity="0.35"/>
       <stop offset="1" stop-color="#8d7cd6" stop-opacity="0"/>
     </radialGradient>
     <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="14"/>
+      <feGaussianBlur stdDeviation="12"/>
     </filter>
   </defs>
 
-  <!-- background -->
   <rect width="1200" height="600" fill="#251d45"/>
-  <ellipse cx="620" cy="360" rx="540" ry="250" fill="url(#glow)"/>
+  <ellipse cx="600" cy="330" rx="480" ry="260" fill="url(#glow)"/>
 
   <!-- mat -->
-  <path d="M150 452 L1075 452 Q1110 452 1102 472 L1090 522 Q1086 538 1050 538 L95 538 Q60 538 68 515 L82 472 Q88 452 122 452 Z" fill="#4a3f85"/>
-  <path d="M150 452 L1075 452 Q1110 452 1103 470 L1096 494 Q1092 506 1060 506 L112 506 Q78 506 84 488 L92 470 Q97 452 128 452 Z" fill="url(#matTop)"/>
+  <path d="M250 470 L950 470 Q985 470 978 490 L966 534 Q962 550 926 550 L272 550 Q236 550 242 530 L252 490 Q258 470 286 470 Z" fill="#4a3f85"/>
+  <path d="M250 470 L950 470 Q985 470 979 488 L972 508 Q968 520 936 520 L262 520 Q228 520 234 502 L242 488 Q247 470 276 470 Z" fill="url(#matTop)"/>
 
-  <!-- figure, scaled up slightly about (820,460) -->
-  <g transform="translate(-106.6,-51) scale(1.13)">
+  <!-- shadow -->
+  <ellipse cx="600" cy="480" rx="235" ry="15" fill="#2e2660" filter="url(#soft)"/>
 
-    <!-- figure shadow on mat -->
-    <ellipse cx="720" cy="466" rx="330" ry="24" fill="#2e2660" filter="url(#soft)"/>
+  <!-- ===== FIGURE: seated butterfly, frontal — big open diamond ===== -->
 
-    <!-- FAR LEG (drops away from viewer: knee appears HIGH, behind) -->
-    <path d="M780 430 Q724 366 678 322 Q656 302 640 310 Q626 320 638 342 Q668 388 722 430 L762 448 Z" fill="#1c1540"/>
-    <path d="M642 314 Q660 360 700 402 Q718 420 740 432 L716 446 Q680 428 652 392 Q628 360 630 336 Z" fill="#150f33"/>
+  <!-- LEFT thigh out to knee -->
+  <path d="M560 400 Q485 386 428 398 Q394 407 396 432 Q400 456 442 454 Q510 448 564 430 Q576 420 572 408 Z" fill="#453a73"/>
+  <ellipse cx="428" cy="426" rx="32" ry="28" fill="#453a73"/>
+  <path d="M556 397 Q480 385 426 398" stroke="none" fill="none"/>
+  <!-- RIGHT thigh out to knee -->
+  <path d="M640 400 Q715 386 772 398 Q806 407 804 432 Q800 456 758 454 Q690 448 636 430 Q624 420 628 408 Z" fill="#453a73"/>
+  <ellipse cx="772" cy="426" rx="32" ry="28" fill="#453a73"/>
+  <path d="M644 397 Q720 385 774 398" stroke="none" fill="none"/>
+  <!-- LEFT shin back to feet -->
+  <path d="M420 450 Q472 470 548 474 L584 474 L580 496 Q484 496 428 480 Q402 472 404 454 Z" fill="#241c49"/>
+  <!-- RIGHT shin back to feet -->
+  <path d="M780 450 Q728 470 652 474 L616 474 L620 496 Q716 496 772 480 Q798 472 796 454 Z" fill="#241c49"/>
+  <!-- FEET: soles together at center, prominent -->
+  <path d="M578 442 Q552 438 542 452 Q534 466 546 480 Q558 492 584 490 L596 486 L596 446 Z" fill="#9d8bd8"/>
+  <path d="M622 442 Q648 438 658 452 Q666 466 654 480 Q642 492 616 490 L604 486 L604 446 Z" fill="#b9a6e8"/>
+  <path d="M600 444 L600 488" stroke="#6f5cb3" stroke-width="3.5" stroke-linecap="round"/>
 
-    <!-- torso lying: shoulders right, hips left; blends under the skull -->
-    <path d="M770 462 Q772 432 800 420 Q838 408 880 406 Q920 404 946 414 Q966 422 972 438 L976 462 Z" fill="url(#skinLit)"/>
-    <!-- leggings over hips -->
-    <path d="M770 462 Q771 436 792 424 Q806 418 818 417 L826 462 Z" fill="#2c2450"/>
+  <!-- TORSO: shorter, top to hips -->
+  <path d="M600 234 Q656 238 672 266 Q686 294 680 336 Q674 376 652 394 Q628 408 600 408 Q572 408 548 394 Q526 376 520 336 Q514 294 528 266 Q544 238 600 234 Z" fill="#2c2450"/>
+  <path d="M564 244 Q600 256 636 244 L630 274 Q600 284 570 274 Z" fill="#f06a93" opacity="0.35"/>
 
-    <!-- head: profile facing up -->
-    <g>
-      <circle cx="994" cy="430" r="31" fill="url(#skinLit)"/>
-      <!-- nose -->
-      <path d="M974 406 Q977 396 986 399 L990 404 Q984 409 976 410 Z" fill="url(#skinLit)"/>
-      <!-- hair: cap over back of skull + bun -->
-      <path d="M994 399 Q1016 402 1024 422 Q1030 438 1022 452 Q1012 462 1000 458 Q1012 440 1006 421 Q1001 407 990 400 Z" fill="#1d1535"/>
-      <circle cx="1028" cy="456" r="13" fill="#1d1535"/>
-      <!-- closed eye -->
-      <path d="M981 414 Q987 411 992 414" stroke="#b25a4e" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-    </g>
+  <!-- ARMS: down and inward, hands on the feet -->
+  <path d="M540 262 Q516 300 512 348 Q509 396 538 432 Q552 448 572 454 L582 434 Q564 426 552 402 Q540 374 544 338 Q548 298 560 268 Z" fill="url(#skin)"/>
+  <path d="M660 262 Q684 300 688 348 Q691 396 662 432 Q648 448 628 454 L618 434 Q636 426 648 402 Q660 374 656 338 Q652 298 640 268 Z" fill="url(#skin)"/>
+  <ellipse cx="574" cy="452" rx="16" ry="12" fill="url(#skin)"/>
+  <ellipse cx="626" cy="452" rx="16" ry="12" fill="url(#skin)"/>
 
-    <!-- sports top over chest -->
-    <path d="M880 406 Q914 404 936 411 L950 419 Q934 434 912 439 Q890 443 874 438 Q866 421 880 406 Z" fill="#2c2450"/>
-
-    <!-- NEAR LEG (drops toward viewer: knee LOW and wide, in front) -->
-    <path d="M790 464 Q728 428 668 408 Q628 396 612 412 Q600 428 622 444 Q664 470 732 476 L790 476 Z" fill="#332a58"/>
-    <path d="M788 462 Q724 426 668 408 Q636 398 618 410 Q638 392 674 404 Q734 424 790 458 Z" fill="#f06a93" opacity="0.9"/>
-    <path d="M620 418 Q650 444 696 458 Q718 464 738 464 L726 478 Q690 480 652 466 Q620 454 610 436 Z" fill="#2c2450"/>
-
-    <!-- feet: soles pressed together near pelvis -->
-    <g>
-      <path d="M754 418 Q738 406 722 410 Q710 414 712 428 Q714 440 732 442 L758 440 Q766 430 754 418 Z" fill="#9d8bd8"/>
-      <path d="M760 438 Q742 428 724 433 Q710 438 714 453 Q718 466 740 466 L766 462 Q774 450 760 438 Z" fill="#b9a6e8"/>
-      <path d="M722 432 Q742 436 762 446" stroke="#6f5cb3" stroke-width="3" fill="none" stroke-linecap="round"/>
-    </g>
-
-    <!-- near arm: resting along side, hand on mat palm-up -->
-    <path d="M930 442 Q896 454 858 462 Q826 468 804 472 Q788 476 790 486 Q794 496 812 492 Q850 484 884 476 Q920 468 944 458 Z" fill="url(#skinArm)"/>
-    <path d="M804 472 Q788 473 782 481 Q778 490 789 494 Q801 497 811 490 Q818 484 814 475 Z" fill="url(#skinArm)"/>
+  <!-- HEAD -->
+  <g>
+    <circle cx="600" cy="176" r="43" fill="url(#skin)"/>
+    <path d="M600 129 Q651 131 659 180 Q661 199 653 213 Q649 182 632 165 Q616 151 600 151 Q584 151 568 165 Q551 182 547 213 Q539 199 541 180 Q549 131 600 129 Z" fill="#1d1535"/>
+    <circle cx="600" cy="123" r="16" fill="#1d1535"/>
+    <path d="M577 181 Q584 186 591 181" stroke="#b25a4e" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <path d="M609 181 Q616 186 623 181" stroke="#b25a4e" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <path d="M592 203 Q600 208 608 203" stroke="#c96a5e" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <path d="M583 215 L617 215 L615 238 Q600 244 585 238 Z" fill="url(#skin)"/>
   </g>
 </svg>
